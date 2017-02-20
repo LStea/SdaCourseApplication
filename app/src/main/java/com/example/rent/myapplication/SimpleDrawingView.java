@@ -20,7 +20,7 @@ public class SimpleDrawingView extends View {
 
     private Path path;
 
-    protected SimpleDrawingView(Context context, AttributeSet attributeSet) {
+    public SimpleDrawingView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
         paint = new Paint();
         path = new Path();
