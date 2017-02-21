@@ -2,4 +2,5 @@
     <string name="app_name">My Application</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="clear_view">Clear</string>
 </resources>

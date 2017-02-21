@@ -14,7 +14,7 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        tools:context="com.example.rent.myapplication.MainActivity">
+        tools:context="com.example.rent.myapplication.Drawing.MainActivity">
 
         <TextView
             android:layout_width="wrap_content"
@@ -37,9 +37,11 @@
             android:paddingBottom="10dp"
             android:textSize="20sp"
             android:gravity="center_horizontal"
-            android:text="rysowanie"
-            android:layout_width="wrap_content"
+            android:text="Rysowanie"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+
 
     </LinearLayout>
 

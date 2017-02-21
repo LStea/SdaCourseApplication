@@ -1,4 +1,4 @@
-package com.example.rent.myapplication;
+package Drawing;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -59,6 +59,5 @@ public class SimpleDrawingView extends View {
         path = new Path();
         postInvalidate();
     }
-
 
     }
