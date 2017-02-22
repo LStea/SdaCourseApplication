@@ -19,8 +19,12 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="Drawing.DrawingMainActivity" />
-        <activity android:name="Gallery.GalleryActivity" />
+        <activity android:name="Drawing.DrawingMainActivity"
+            android:label="Drawing"/>
+        <activity android:name="Gallery.GalleryActivity"
+            android:label="Gallery" />
+        <activity android:name="TodoList.TodoListActivity"
+            android:label="TODO list"/>
     </application>
 
 </manifest>
