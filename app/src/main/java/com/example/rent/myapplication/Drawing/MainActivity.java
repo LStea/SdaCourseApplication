@@ -1,4 +1,4 @@
-package Drawing;
+package com.example.rent.myapplication.Drawing;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.rent.myapplication.R;
+
+import com.example.rent.myapplication.TodoList.TodoListActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,21 +31,31 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //        nawigacja do góry
 
-        drawerToggle =  new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
-            drawerLayout.addDrawerListener(drawerToggle);
+        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
+        drawerLayout.addDrawerListener(drawerToggle);
 
         TextView textView = (TextView) findViewById(R.id.drawing_app);
 
-            textView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent((v.getContext()), DrawingMainActivity.class);
-                    startActivity(intent);
-                }
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent((v.getContext()), DrawingMainActivity.class);
+                startActivity(intent);
+            }
 
         });
 
+        TextView todoAplication = (TextView) findViewById(R.id.todo_application);
+        todoAplication.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, TodoListActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
+
 
     @Override
     public void onPostCreate(Bundle savedInstanceState) {
@@ -66,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return super.onOptionsItemSelected(item);
-
 
 
     }

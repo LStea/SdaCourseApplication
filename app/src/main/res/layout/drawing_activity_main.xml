@@ -10,7 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.rent.myapplication.Drawing.DrawingMainActivity">
 
-    <Drawing.SimpleDrawingView
+    <com.example.rent.myapplication.Drawing.SimpleDrawingView
         android:id="@+id/simple_drawing_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

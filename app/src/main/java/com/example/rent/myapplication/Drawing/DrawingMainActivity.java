@@ -1,4 +1,4 @@
-package Drawing;
+package com.example.rent.myapplication.Drawing;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -17,7 +17,7 @@ import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import Gallery.GalleryActivity;
+import com.example.rent.myapplication.Gallery.GalleryActivity;
 
 
 public class DrawingMainActivity extends AppCompatActivity {
