@@ -1,4 +1,4 @@
-package Drawing;
+package com.example.rent.myapplication.Drawing;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.example.rent.myapplication.R;
 
-import TodoList.TodoListActivity;
+import com.example.rent.myapplication.TodoList.TodoListActivity;
 
 public class MainActivity extends AppCompatActivity {
 

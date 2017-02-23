@@ -1,4 +1,4 @@
-package Gallery;
+package com.example.rent.myapplication.Gallery;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

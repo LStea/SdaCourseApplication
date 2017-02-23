@@ -1,7 +1,5 @@
-package Gallery;
+package com.example.rent.myapplication.Gallery;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -9,10 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import com.example.rent.myapplication.R;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
-import Drawing.DrawingMainActivity;
+import com.example.rent.myapplication.Drawing.DrawingMainActivity;
 
 /**
  * Created by RENT on 2017-02-21.
