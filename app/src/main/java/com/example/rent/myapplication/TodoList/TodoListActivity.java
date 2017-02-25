@@ -1,8 +1,8 @@
 package com.example.rent.myapplication.TodoList;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.ActionMode;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,24 +12,51 @@ import android.widget.EditText;
 
 import com.example.rent.myapplication.R;
 
-/**
- * Created by RENT on 2017-02-22.
- */
-
-public class TodoListActivity extends AppCompatActivity {
-
-
-    TodoListAdapter todoListAdapter = new TodoListAdapter();
+public class TodoListActivity extends AppCompatActivity implements OnItemCheckStateChenged {
+    private TodoListAdapter todoListAdapter;
+    private String activityTitle;
+    private ActionMode actionMode;
 
     @Override
-    public void onItemCheckStateChanged(int checkedItemsCount) {
+    public void onItemCheckStateChenged(int checkedItemsCount) {
         if (checkedItemsCount > 0) {
-            getSupportActionBar().setTitle("checked items");
-
+            if (actionMode == null) {
+                createActionMode();
+            }
+            actionMode.setTitle("checked items" + checkedItemsCount);
         } else {
+            if (actionMode != null) {
+                actionMode.finish();
+            }
             getSupportActionBar().setTitle(activityTitle);
         }
     }
+
+    private void createActionMode() {
+        actionMode = startSupportActionMode(new ActionMode.Callback() {
+            @Override
+            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                mode.getMenuInflater().inflate(R.menu.todo_action_menu, menu);
+                return true;
+            }
+
+            @Override
+            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+                return false;
+            }
+
+            @Override
+            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                return false;
+            }
+
+            @Override
+            public void onDestroyActionMode(ActionMode mode) {
+
+            }
+        });
+    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,12 +66,8 @@ public class TodoListActivity extends AppCompatActivity {
         activityTitle = getSupportActionBar().getTitle().toString();
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         todoListAdapter = new TodoListAdapter();
-
-
         recyclerView.setAdapter(todoListAdapter);
-
-        todoListAdapter.setCheckListener((OnItemCheckStateChenged) this);
-
+        todoListAdapter.setCheckListener(this);
         final EditText editText = (EditText) findViewById(R.id.todo_edit_text);
 
         Button addButton = (Button) findViewById(R.id.add_button);
@@ -56,7 +79,6 @@ public class TodoListActivity extends AppCompatActivity {
                 todoListAdapter.addItem(editText.getText().toString());
             }
         });
-
     }
 
     @Override
@@ -68,10 +90,9 @@ public class TodoListActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.delete_item) {
-            TodoListAdapter.deleteAllCheckedItems();
+            todoListAdapter.deleteAllCheckedItems();
         }
         return super.onOptionsItemSelected(item);
     }
 }
-
 

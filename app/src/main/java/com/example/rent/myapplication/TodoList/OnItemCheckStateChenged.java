@@ -8,4 +8,5 @@ public interface OnItemCheckStateChenged {
 
     void onItemCheckStateChenged(int checkedItemsCount);
 
+
 }
