@@ -1,4 +1,4 @@
-package com.example.rent.myapplication.Drawing;
+package com.example.rent.myapplication.Main;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,8 +10,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.rent.myapplication.R;
+import com.example.rent.myapplication.Drawing.DrawingMainActivity;
+import com.example.rent.myapplication.Milioners.MilionersMain;
 
+import com.example.rent.myapplication.R;
+import com.example.rent.myapplication.SpeedTest.SpeedTestActivity;
 import com.example.rent.myapplication.TodoList.TodoListActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -53,7 +56,23 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        TextView milionersMain = (TextView) findViewById(R.id.milioners_application);
+        milionersMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MilionersMain.class);
+                startActivity(intent);
+            }
+        });
 
+        TextView speedTest = (TextView) findViewById(R.id.speedTest_application);
+        speedTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SpeedTestActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
