@@ -12,6 +12,7 @@ public class QuestionQuiz {
     private String question;
     private List<SingleAnswer> answers;
 
+
     public int getId() {
         return id;
     }
