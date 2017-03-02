@@ -29,6 +29,8 @@
             android:label="Speed Test"/>
         <activity android:name=".Milioners.MilionersMain"
             android:label="Milioners"/>
+        <activity android:name=".BooksIMustRead.BookReaderMain"
+            android:label="Book Reader"/>
     </application>
 
 </manifest>

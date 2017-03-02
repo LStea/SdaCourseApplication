@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.rent.myapplication.BooksIMustRead.BookReaderMain;
 import com.example.rent.myapplication.Drawing.DrawingMainActivity;
 import com.example.rent.myapplication.Milioners.MilionersMain;
 
@@ -73,7 +74,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        TextView bookReader = (TextView) findViewById(R.id.book_reader_application);
+        bookReader.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, BookReaderMain.class);
+                startActivity(intent);
+            }
+        });
     }
+
+
 
 
     @Override

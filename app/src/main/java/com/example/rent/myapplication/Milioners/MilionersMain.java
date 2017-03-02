@@ -2,7 +2,6 @@ package com.example.rent.myapplication.Milioners;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -28,15 +27,15 @@ import java.io.UnsupportedEncodingException;
 public class MilionersMain extends AppCompatActivity implements View.OnClickListener {
 
     private static final String INDEX_KEY = "index_key";
-    private int currentQuestionIndex;
+    private int currentIndex;
     private boolean wasViewClicked;
-
+    private QuizContainer quizContainer;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.milioners_main);
-
+        currentIndex = getIntent().getIntExtra(INDEX_KEY, 0);
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_bar);
         ValueAnimator objectAnimator = ObjectAnimator.ofInt(0, 100);
         objectAnimator.setDuration(10000);
@@ -52,9 +51,9 @@ public class MilionersMain extends AppCompatActivity implements View.OnClickList
 
         try {
             json = loadQuizJson();
-            QuizContainer quizContainer = new Gson().fromJson(json, QuizContainer.class);
+            quizContainer = new Gson().fromJson(json, QuizContainer.class);
             TextView textView = (TextView) findViewById(R.id.question);
-            QuestionQuiz questionQuiz = quizContainer.getQuestions().get(currentQuestionIndex);
+            QuestionQuiz questionQuiz = quizContainer.getQuestions().get(currentIndex);
             textView.setText(questionQuiz.getQuestion());
 
             Button answerOne = (Button) findViewById(R.id.answer_one);
@@ -76,7 +75,7 @@ public class MilionersMain extends AppCompatActivity implements View.OnClickList
 
             SingleAnswer fourth = questionQuiz.getAnswers().get(3);
             answerFour.setText(fourth.getText());
-            answerThree.setTag(fourth.isCorrect());
+            answerFour.setTag(fourth.isCorrect());
 
             answerOne.setOnClickListener(this);
             answerTwo.setOnClickListener(this);
@@ -99,34 +98,39 @@ public class MilionersMain extends AppCompatActivity implements View.OnClickList
             v.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent intent = new Intent(MilionersMain.this, MilionersMain.class);
-                    intent.putExtra(INDEX_KEY, ++currentQuestionIndex);
-                    startActivity(intent);
+                    if (currentIndex < quizContainer.getQuestionsCount() - 1) {
+                        Intent intent = new Intent(MilionersMain.this, MilionersMain.class);
+                        intent.putExtra(INDEX_KEY, ++currentIndex);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(MilionersMain.this, "koniec quizu", Toast.LENGTH_LONG).show();
+                    }
                 }
             }, 3000);
-            wasViewClicked = true; }
+            wasViewClicked = true;
+        }
     }
 
-            private String loadQuizJson() throws IOException {
-                StringBuilder buf = new StringBuilder();
-            InputStream json = null;
-            try {
-                json = getAssets().open("quiz_data.json");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            BufferedReader in = null;
-            try {
-                in = new BufferedReader(new InputStreamReader(json, "UTF-8"));
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-            String string;
-                while ((string = in.readLine()) != null) {
-                    buf.append(string);
-                }
-                in.close();
-                return buf.toString();
+    private String loadQuizJson() throws IOException {
+        StringBuilder buf = new StringBuilder();
+        InputStream json = null;
+        try {
+            json = getAssets().open("quiz_data.json");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        BufferedReader in = null;
+        try {
+            in = new BufferedReader(new InputStreamReader(json, "UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        String string;
+        while ((string = in.readLine()) != null) {
+            buf.append(string);
+        }
+        in.close();
+        return buf.toString();
 
-            }
+    }
 }
