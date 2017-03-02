@@ -24,15 +24,8 @@ public class Book {
         this.title = title;
     }
 
-
     public int getImageResourceId() {
         return imageResourceId;
-    }
-
-
-    public Book(@DrawableRes int imageResourceId) {
-        this.imageResourceId = imageResourceId;
-
     }
 
     public void setId(int id) {
@@ -69,8 +62,5 @@ public class Book {
 
     public void setRead(boolean read) {
         isRead = read;
-
-
-
     }
 }

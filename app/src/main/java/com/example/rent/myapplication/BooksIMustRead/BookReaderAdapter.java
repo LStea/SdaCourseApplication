@@ -33,9 +33,11 @@ public class BookReaderAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, final int position) {
-        
+
         LayoutInflater inflater = LayoutInflater.from(container.getContext());
-        inflater.inflate(R.layout.book_page, container, false);
+
+        View pageLayout = inflater.inflate(R.layout.book_page, container, false);
+
         ImageView image = (ImageView) pageLayout.findViewById(R.id.image);
         image.setImageResource(books.get(position).getImageResourceId());
 
@@ -71,11 +73,13 @@ public class BookReaderAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return false;
+        return object == view;
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return books.get(position).getTitle();
     }
 }
-//        public CharSequence getPageTitle(int position) {
-////        return books.get(position).getTitle();
-//
-//        }
+
 
