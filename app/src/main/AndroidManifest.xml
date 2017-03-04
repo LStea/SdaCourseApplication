@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.rent.myapplication">
 
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -18,19 +17,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".Drawing.DrawingMainActivity"
-            android:label="Drawing"/>
-        <activity android:name=".Gallery.GalleryActivity"
+        <activity
+            android:name=".Drawing.DrawingMainActivity"
+            android:label="Drawing" />
+        <activity
+            android:name=".Gallery.GalleryActivity"
             android:label="Gallery" />
-        <activity android:name=".TodoList.TodoListActivity"
-            android:label="TODO list"/>
-        <activity android:name=".SpeedTest.SpeedTestActivity"
-            android:label="Speed Test"/>
-        <activity android:name=".Milioners.MilionersMain"
-            android:label="Milioners"/>
-        <activity android:name=".BooksIMustRead.BookReaderMain"
-            android:label="Book Reader"/>
+        <activity
+            android:name=".TodoList.TodoListActivity"
+            android:label="TODO list" />
+        <activity
+            android:name=".SpeedTest.SpeedTestActivity"
+            android:label="Speed Test" />
+        <activity
+            android:name=".Milioners.MilionersMain"
+            android:label="Milioners" />
+        <activity
+            android:name=".BooksIMustRead.BookReaderMain"
+            android:label="Book Reader" />
+        <activity android:name=".Fortune.FortuneActivity"
+            android:label="Fortune" />
+        <activity android:name=".mvp.MvpActivity"
+            android:label="mvp" />
+
     </application>
 
 </manifest>

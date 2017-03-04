@@ -12,11 +12,13 @@ import android.widget.TextView;
 
 import com.example.rent.myapplication.BooksIMustRead.BookReaderMain;
 import com.example.rent.myapplication.Drawing.DrawingMainActivity;
+import com.example.rent.myapplication.Fortune.FortuneActivity;
 import com.example.rent.myapplication.Milioners.MilionersMain;
 
 import com.example.rent.myapplication.R;
 import com.example.rent.myapplication.SpeedTest.SpeedTestActivity;
 import com.example.rent.myapplication.TodoList.TodoListActivity;
+import com.example.rent.myapplication.mvp.MvpActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -80,6 +82,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, BookReaderMain.class);
+                startActivity(intent);
+            }
+        });
+
+        TextView fortune = (TextView) findViewById(R.id.fortune_application);
+        fortune.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, FortuneActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        TextView mvp = (TextView) findViewById(R.id.mvp_application);
+        mvp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MvpActivity.class);
                 startActivity(intent);
             }
         });
